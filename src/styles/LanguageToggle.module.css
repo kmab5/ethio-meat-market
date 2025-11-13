@@ -1,0 +1,14 @@
+.langToggle {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.langToggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

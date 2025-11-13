@@ -1,0 +1,35 @@
+.panel {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.list {
+    list-style: none;
+    margin-top: 0.5rem;
+    padding: 0;
+}
+
+.notif {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.notif.info {
+    color: #008037;
+}
+
+.notif.warning {
+    color: #e67e22;
+}
+
+.notif.error {
+    color: #c0392b;
+}
+
+.notif.success {
+    color: #27ae60;
+}

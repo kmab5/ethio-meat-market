@@ -1,0 +1,28 @@
+.container {
+    max-width: 400px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #008037;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
