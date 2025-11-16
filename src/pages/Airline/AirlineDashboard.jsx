@@ -2,8 +2,11 @@ import React from "react";
 import Card from "../../components/UI/Card";
 import CargoStatus from "./CargoStatus";
 import schedules from "../../data/schedules";
+import { useLanguage } from "../../context/LanguageContext";
 
 function AirlineDashboard() {
+    const { language, translations } = useLanguage();
+
     const totalFlights = schedules.length;
     const inTransit = schedules.filter((s) => s.status === "In Transit").length;
     const scheduled = schedules.filter((s) => s.status === "Scheduled").length;
@@ -12,10 +15,13 @@ function AirlineDashboard() {
 
     return (
         <div>
-            <h2>Airline Dashboard</h2>
+            <h2>
+                {translations?.[language]?.airlineDashboardTitle ||
+                    "Airline Dashboard"}
+            </h2>
             <p style={{ color: "#555", marginBottom: "1.5rem" }}>
-                Manage and track livestock cargo shipments across Ethiopia and
-                abroad.
+                {translations?.[language]?.airlineDashboardDesc ||
+                    "Manage and track livestock cargo shipments across Ethiopia and abroad."}
             </p>
 
             {/* Summary Stats */}
@@ -27,16 +33,30 @@ function AirlineDashboard() {
                     marginBottom: "2rem",
                 }}
             >
-                <Card title="Total Shipments">
+                <Card
+                    title={
+                        translations?.[language]?.totalShipments ||
+                        "Total Shipments"
+                    }
+                >
                     <p>{totalFlights}</p>
                 </Card>
-                <Card title="Scheduled Flights">
+                <Card
+                    title={
+                        translations?.[language]?.scheduledFlights ||
+                        "Scheduled Flights"
+                    }
+                >
                     <p>{scheduled}</p>
                 </Card>
-                <Card title="In Transit">
+                <Card
+                    title={translations?.[language]?.inTransit || "In Transit"}
+                >
                     <p>{inTransit}</p>
                 </Card>
-                <Card title="Delivered">
+                <Card
+                    title={translations?.[language]?.delivered || "Delivered"}
+                >
                     <p>{delivered}</p>
                 </Card>
             </div>

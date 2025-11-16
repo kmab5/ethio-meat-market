@@ -1,10 +1,14 @@
 import React from "react";
 import livestock from "../../data/livestock";
 import Card from "../../components/UI/Card";
+import { useLanguage } from "../../context/LanguageContext";
 
 function LivestockList() {
+    const { language, translations } = useLanguage();
+    const t = translations?.[language] || {};
+
     return (
-        <Card title="My Livestock Listings">
+        <Card title={t.myLivestockListings || "My Livestock Listings"}>
             <table
                 style={{
                     width: "100%",
@@ -19,13 +23,21 @@ function LivestockList() {
                             textAlign: "left",
                         }}
                     >
-                        <th style={{ padding: "8px" }}>ID</th>
-                        <th style={{ padding: "8px" }}>Type</th>
-                        <th style={{ padding: "8px" }}>Breed</th>
-                        <th style={{ padding: "8px" }}>Weight (kg)</th>
-                        <th style={{ padding: "8px" }}>Health</th>
-                        <th style={{ padding: "8px" }}>Location</th>
-                        <th style={{ padding: "8px" }}>Status</th>
+                        <th style={{ padding: "8px" }}>{t.idLabel || "ID"}</th>
+                        <th style={{ padding: "8px" }}>{t.type || "Type"}</th>
+                        <th style={{ padding: "8px" }}>{t.breed || "Breed"}</th>
+                        <th style={{ padding: "8px" }}>
+                            {t.weightKg || "Weight (kg)"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {t.health || "Health"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {t.location || "Location"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {t.status || "Status"}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,9 +56,11 @@ function LivestockList() {
                                 style={{
                                     padding: "8px",
                                     color:
-                                        item.status === "Available"
+                                        item.status ===
+                                        (t.availableLabel || "Available")
                                             ? "#008037"
-                                            : item.status === "Sold"
+                                            : item.status ===
+                                              (t.soldLabel || "Sold")
                                             ? "#e67e22"
                                             : "#555",
                                     fontWeight: 500,

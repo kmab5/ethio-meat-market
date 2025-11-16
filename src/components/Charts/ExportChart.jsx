@@ -1,6 +1,12 @@
 import React from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 function ExportChart() {
+    const { language, translations } = useLanguage();
+    const title =
+        translations?.[language]?.monthlyExportVolumeTitle ||
+        "Monthly Export Volume (Dummy)";
+
     const data = [
         { month: "Jan", exports: 20 },
         { month: "Feb", exports: 35 },
@@ -10,7 +16,7 @@ function ExportChart() {
 
     return (
         <div className="chart-card">
-            <h3>Monthly Export Volume (Dummy)</h3>
+            <h3>{title}</h3>
             <div
                 style={{
                     display: "flex",

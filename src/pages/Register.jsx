@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
+import { useLanguage } from "../context/LanguageContext";
 
 function Register() {
     const navigate = useNavigate();
+    const { language, translations } = useLanguage();
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -33,14 +35,19 @@ function Register() {
             }}
         >
             <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-                Register
+                {translations?.[language]?.register || "Register"}
             </h2>
             <form onSubmit={handleSubmit}>
-                <label>Full Name</label>
+                <label>
+                    {translations?.[language]?.fullName || "Full Name"}
+                </label>
                 <input
                     type="text"
                     name="name"
-                    placeholder="Enter your name"
+                    placeholder={
+                        translations?.[language]?.enterYourName ||
+                        "Enter your name"
+                    }
                     value={form.name}
                     onChange={handleChange}
                     required
@@ -51,11 +58,14 @@ function Register() {
                     }}
                 />
 
-                <label>Email</label>
+                <label>{translations?.[language]?.email || "Email"}</label>
                 <input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={
+                        translations?.[language]?.enterYourEmail ||
+                        "Enter your email"
+                    }
                     value={form.email}
                     onChange={handleChange}
                     required
@@ -66,11 +76,16 @@ function Register() {
                     }}
                 />
 
-                <label>Password</label>
+                <label>
+                    {translations?.[language]?.password || "Password"}
+                </label>
                 <input
                     type="password"
                     name="password"
-                    placeholder="Enter a password"
+                    placeholder={
+                        translations?.[language]?.enterYourPassword ||
+                        "Enter a password"
+                    }
                     value={form.password}
                     onChange={handleChange}
                     required
@@ -81,7 +96,7 @@ function Register() {
                     }}
                 />
 
-                <label>Role</label>
+                <label>{translations?.[language]?.role || "Role"}</label>
                 <select
                     name="role"
                     value={form.role}
@@ -92,22 +107,37 @@ function Register() {
                         padding: "8px",
                     }}
                 >
-                    <option>Supplier</option>
-                    <option>Exporter</option>
-                    <option>Abattoir</option>
-                    <option>Airline</option>
-                    <option>Regulator</option>
+                    <option>
+                        {translations?.[language]?.supplier || "Supplier"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.exporter || "Exporter"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.abattoir || "Abattoir"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.airline || "Airline"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.regulator || "Regulator"}
+                    </option>
                 </select>
 
                 <Button
-                    label="Create Account"
+                    label={
+                        translations?.[language]?.createAccount ||
+                        "Create Account"
+                    }
                     type="primary"
                     onClick={handleSubmit}
                 />
             </form>
 
             <p style={{ marginTop: "1rem", textAlign: "center" }}>
-                Already have an account? <a href="/">Login</a>
+                {translations?.[language]?.alreadyHaveAccount ||
+                    "Already have an account?"}{" "}
+                <a href="/">{translations?.[language]?.login || "Login"}</a>
             </p>
         </div>
     );

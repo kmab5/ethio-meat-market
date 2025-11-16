@@ -2,14 +2,19 @@ import React from "react";
 import orders from "../../data/orders";
 import Card from "../../components/UI/Card";
 import Button from "../../components/UI/Button";
+import { useLanguage } from "../../context/LanguageContext";
 
 function ApprovalList() {
-    const pending = orders.filter((o) => o.status === "Pending");
+    const { language, translations } = useLanguage();
+    const t = translations?.[language] || {};
+    const pending = orders.filter(
+        (o) => o.status === (t.pendingLabel || "Pending")
+    );
 
     return (
-        <Card title="Pending Export Approvals">
+        <Card title={t.pendingExportApprovals || "Pending Export Approvals"}>
             {pending.length === 0 ? (
-                <p>All orders have been approved.</p>
+                <p>{t.allOrdersApproved || "All orders have been approved."}</p>
             ) : (
                 <table
                     style={{
@@ -25,11 +30,21 @@ function ApprovalList() {
                                 textAlign: "left",
                             }}
                         >
-                            <th style={{ padding: "8px" }}>Order ID</th>
-                            <th style={{ padding: "8px" }}>Exporter</th>
-                            <th style={{ padding: "8px" }}>Livestock</th>
-                            <th style={{ padding: "8px" }}>Quantity</th>
-                            <th style={{ padding: "8px" }}>Action</th>
+                            <th style={{ padding: "8px" }}>
+                                {t.orderId || "Order ID"}
+                            </th>
+                            <th style={{ padding: "8px" }}>
+                                {t.exporter || "Exporter"}
+                            </th>
+                            <th style={{ padding: "8px" }}>
+                                {t.livestock || "Livestock"}
+                            </th>
+                            <th style={{ padding: "8px" }}>
+                                {t.quantity || "Quantity"}
+                            </th>
+                            <th style={{ padding: "8px" }}>
+                                {t.action || "Action"}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,11 +61,16 @@ function ApprovalList() {
                                 <td style={{ padding: "8px" }}>{o.quantity}</td>
                                 <td style={{ padding: "8px" }}>
                                     <Button
-                                        label="Approve"
+                                        label={t.approve || "Approve"}
                                         type="primary"
                                         onClick={() =>
                                             alert(
-                                                `Order #${o.id} approved (dummy)`
+                                                (t.orderApprovedAlert &&
+                                                    t.orderApprovedAlert.replace(
+                                                        "{{id}}",
+                                                        o.id
+                                                    )) ||
+                                                    `Order #${o.id} approved (dummy)`
                                             )
                                         }
                                     />

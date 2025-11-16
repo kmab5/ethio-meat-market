@@ -2,12 +2,19 @@ import React from "react";
 import livestock from "../../data/livestock";
 import Card from "../../components/UI/Card";
 import Button from "../../components/UI/Button";
+import { useLanguage } from "../../context/LanguageContext";
 
 function LivestockBrowser() {
+    const { language, translations } = useLanguage();
     const available = livestock.filter((item) => item.status === "Available");
 
     return (
-        <Card title="Available Livestock">
+        <Card
+            title={
+                translations?.[language]?.availableLivestock ||
+                "Available Livestock"
+            }
+        >
             <div
                 style={{
                     display: "grid",
@@ -28,19 +35,38 @@ function LivestockBrowser() {
                     >
                         <h4>{item.type}</h4>
                         <p>
-                            <strong>Breed:</strong> {item.breed}
+                            <strong>
+                                {translations?.[language]?.breedLabel ||
+                                    "Breed:"}
+                            </strong>{" "}
+                            {item.breed}
                         </p>
                         <p>
-                            <strong>Weight:</strong> {item.weightKg} kg
+                            <strong>
+                                {translations?.[language]?.weightLabel ||
+                                    "Weight:"}
+                            </strong>{" "}
+                            {item.weightKg} kg
                         </p>
                         <p>
-                            <strong>Health:</strong> {item.health}
+                            <strong>
+                                {translations?.[language]?.healthLabel ||
+                                    "Health:"}
+                            </strong>{" "}
+                            {item.health}
                         </p>
                         <p>
-                            <strong>Location:</strong> {item.location}
+                            <strong>
+                                {translations?.[language]?.locationLabel ||
+                                    "Location:"}
+                            </strong>{" "}
+                            {item.location}
                         </p>
                         <Button
-                            label="Request Order"
+                            label={
+                                translations?.[language]?.requestOrder ||
+                                "Request Order"
+                            }
                             type="primary"
                             onClick={() => alert("Dummy: Order request sent!")}
                         />

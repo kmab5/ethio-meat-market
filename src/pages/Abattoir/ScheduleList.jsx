@@ -1,10 +1,17 @@
 import React from "react";
 import schedules from "../../data/schedules";
 import Card from "../../components/UI/Card";
+import { useLanguage } from "../../context/LanguageContext";
 
 function ScheduleList() {
+    const { language, translations } = useLanguage();
+
     return (
-        <Card title="Batch Schedules">
+        <Card
+            title={
+                translations?.[language]?.batchSchedules || "Batch Schedules"
+            }
+        >
             <table
                 style={{
                     width: "100%",
@@ -19,12 +26,27 @@ function ScheduleList() {
                             textAlign: "left",
                         }}
                     >
-                        <th style={{ padding: "8px" }}>Batch ID</th>
-                        <th style={{ padding: "8px" }}>Abattoir</th>
-                        <th style={{ padding: "8px" }}>Date</th>
-                        <th style={{ padding: "8px" }}>Livestock Batch</th>
-                        <th style={{ padding: "8px" }}>Airline</th>
-                        <th style={{ padding: "8px" }}>Status</th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.batchId || "Batch ID"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.abattoirLabel ||
+                                "Abattoir"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.dateLabel || "Date"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.livestockBatch ||
+                                "Livestock Batch"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.airlineLabel ||
+                                "Airline"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.statusLabel || "Status"}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

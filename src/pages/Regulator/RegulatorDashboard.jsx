@@ -4,8 +4,11 @@ import ApprovalList from "./ApprovalList";
 import Reports from "./Reports";
 import analytics from "../../data/analytics";
 import orders from "../../data/orders";
+import { useLanguage } from "../../context/LanguageContext";
 
 function RegulatorDashboard() {
+    const { language, translations } = useLanguage();
+
     const pendingApprovals = orders.filter(
         (o) => o.status === "Pending"
     ).length;
@@ -13,10 +16,13 @@ function RegulatorDashboard() {
 
     return (
         <div>
-            <h2>Regulatory Authority Dashboard</h2>
+            <h2>
+                {translations?.[language]?.regulatorDashboardTitle ||
+                    "Regulatory Authority Dashboard"}
+            </h2>
             <p style={{ color: "#555", marginBottom: "1.5rem" }}>
-                Monitor export activities, manage approvals, and review
-                performance insights.
+                {translations?.[language]?.regulatorDashboardDesc ||
+                    "Monitor export activities, manage approvals, and review performance insights."}
             </p>
 
             {/* Summary Metrics */}
@@ -28,16 +34,36 @@ function RegulatorDashboard() {
                     marginBottom: "2rem",
                 }}
             >
-                <Card title="Total Livestock">
+                <Card
+                    title={
+                        translations?.[language]?.totalLivestock ||
+                        "Total Livestock"
+                    }
+                >
                     <p>{analytics.totalLivestock}</p>
                 </Card>
-                <Card title="Approved Exports">
+                <Card
+                    title={
+                        translations?.[language]?.approvedExports ||
+                        "Approved Exports"
+                    }
+                >
                     <p>{approved}</p>
                 </Card>
-                <Card title="Pending Approvals">
+                <Card
+                    title={
+                        translations?.[language]?.pendingApprovals ||
+                        "Pending Approvals"
+                    }
+                >
                     <p>{pendingApprovals}</p>
                 </Card>
-                <Card title="Available for Export">
+                <Card
+                    title={
+                        translations?.[language]?.availableForExport ||
+                        "Available for Export"
+                    }
+                >
                     <p>{analytics.availableForExport}</p>
                 </Card>
             </div>

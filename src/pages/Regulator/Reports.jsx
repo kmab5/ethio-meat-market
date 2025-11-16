@@ -2,12 +2,17 @@ import React from "react";
 import Card from "../../components/UI/Card";
 import ExportChart from "../../components/Charts/ExportChart";
 import analytics from "../../data/analytics";
+import { useLanguage } from "../../context/LanguageContext";
 
 function Reports() {
+    const { language, translations } = useLanguage();
+    const t = translations?.[language] || {};
+
     return (
-        <Card title="Export Performance Reports">
+        <Card title={t.exportReports || "Export Performance Reports"}>
             <p style={{ color: "#555", marginBottom: "1rem" }}>
-                Monthly export performance and livestock availability summary.
+                {t.exportReportsSummary ||
+                    "Monthly export performance and livestock availability summary."}
             </p>
 
             {/* Chart */}
@@ -24,7 +29,9 @@ function Reports() {
             >
                 {analytics.monthlyExports.map((m) => (
                     <Card key={m.month} title={m.month}>
-                        <p>{m.count} Exports</p>
+                        <p>
+                            {m.count} {t.exportsLabel || "Exports"}
+                        </p>
                     </Card>
                 ))}
             </div>

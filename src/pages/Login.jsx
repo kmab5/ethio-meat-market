@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
+import { useLanguage } from "../context/LanguageContext";
 
 function Login() {
     const navigate = useNavigate();
@@ -20,6 +21,8 @@ function Login() {
         navigate("/dashboard");
     };
 
+    const { language, translations } = useLanguage();
+
     return (
         <div
             style={{
@@ -32,14 +35,17 @@ function Login() {
             }}
         >
             <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-                Login
+                {translations?.[language]?.login || "Login"}
             </h2>
             <form onSubmit={handleSubmit}>
-                <label>Email</label>
+                <label>{translations?.[language]?.email || "Email"}</label>
                 <input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={
+                        translations?.[language]?.enterYourEmail ||
+                        "Enter your email"
+                    }
                     value={form.email}
                     onChange={handleChange}
                     required
@@ -50,11 +56,16 @@ function Login() {
                     }}
                 />
 
-                <label>Password</label>
+                <label>
+                    {translations?.[language]?.password || "Password"}
+                </label>
                 <input
                     type="password"
                     name="password"
-                    placeholder="Enter your password"
+                    placeholder={
+                        translations?.[language]?.enterYourPassword ||
+                        "Enter your password"
+                    }
                     value={form.password}
                     onChange={handleChange}
                     required
@@ -65,7 +76,7 @@ function Login() {
                     }}
                 />
 
-                <label>Role</label>
+                <label>{translations?.[language]?.role || "Role"}</label>
                 <select
                     name="role"
                     value={form.role}
@@ -76,18 +87,36 @@ function Login() {
                         padding: "8px",
                     }}
                 >
-                    <option>Supplier</option>
-                    <option>Exporter</option>
-                    <option>Abattoir</option>
-                    <option>Airline</option>
-                    <option>Regulator</option>
+                    <option>
+                        {translations?.[language]?.supplier || "Supplier"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.exporter || "Exporter"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.abattoir || "Abattoir"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.airline || "Airline"}
+                    </option>
+                    <option>
+                        {translations?.[language]?.regulator || "Regulator"}
+                    </option>
                 </select>
 
-                <Button label="Login" type="primary" onClick={handleSubmit} />
+                <Button
+                    label={translations?.[language]?.login || "Login"}
+                    type="primary"
+                    onClick={handleSubmit}
+                />
             </form>
 
             <p style={{ marginTop: "1rem", textAlign: "center" }}>
-                Don’t have an account? <a href="/register">Register</a>
+                {translations?.[language]?.dontHaveAccount ||
+                    "Don’t have an account?"}{" "}
+                <a href="/register">
+                    {translations?.[language]?.register || "Register"}
+                </a>
             </p>
         </div>
     );

@@ -1,10 +1,18 @@
 import React from "react";
 import schedules from "../../data/schedules";
 import Card from "../../components/UI/Card";
+import { useLanguage } from "../../context/LanguageContext";
 
 function CargoStatus() {
+    const { language, translations } = useLanguage();
+
     return (
-        <Card title="Cargo Shipments Overview">
+        <Card
+            title={
+                translations?.[language]?.cargoShipmentsOverview ||
+                "Cargo Shipments Overview"
+            }
+        >
             <table
                 style={{
                     width: "100%",
@@ -19,12 +27,27 @@ function CargoStatus() {
                             textAlign: "left",
                         }}
                     >
-                        <th style={{ padding: "8px" }}>Flight ID</th>
-                        <th style={{ padding: "8px" }}>Airline</th>
-                        <th style={{ padding: "8px" }}>Batch</th>
-                        <th style={{ padding: "8px" }}>Abattoir</th>
-                        <th style={{ padding: "8px" }}>Departure Date</th>
-                        <th style={{ padding: "8px" }}>Status</th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.flightId || "Flight ID"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.airlineLabel ||
+                                "Airline"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.batchLabel || "Batch"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.abattoirLabel ||
+                                "Abattoir"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.departureDate ||
+                                "Departure Date"}
+                        </th>
+                        <th style={{ padding: "8px" }}>
+                            {translations?.[language]?.statusLabel || "Status"}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

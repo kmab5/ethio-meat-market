@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Card from "../../components/UI/Card";
 import Button from "../../components/UI/Button";
+import { useLanguage } from "../../context/LanguageContext";
 
 function RegisterLivestock() {
+    const { language, translations } = useLanguage();
+    const t = translations?.[language] || {};
+
     const [form, setForm] = useState({
         type: "",
         breed: "",
@@ -17,7 +21,10 @@ function RegisterLivestock() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert("Livestock registered successfully! (dummy)");
+        alert(
+            t.livestockRegistered ||
+                "Livestock registered successfully! (dummy)"
+        );
         setForm({
             type: "",
             breed: "",
@@ -28,7 +35,7 @@ function RegisterLivestock() {
     };
 
     return (
-        <Card title="Register New Livestock">
+        <Card title={t.registerNewLivestock || "Register New Livestock"}>
             <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
                 <div
                     style={{
@@ -40,11 +47,11 @@ function RegisterLivestock() {
                     }}
                 >
                     <div>
-                        <label>Type</label>
+                        <label>{t.type || "Type"}</label>
                         <input
                             type="text"
                             name="type"
-                            placeholder="e.g., Cattle"
+                            placeholder={t.typePlaceholder || "e.g., Cattle"}
                             value={form.type}
                             onChange={handleChange}
                             required
@@ -57,11 +64,11 @@ function RegisterLivestock() {
                     </div>
 
                     <div>
-                        <label>Breed</label>
+                        <label>{t.breed || "Breed"}</label>
                         <input
                             type="text"
                             name="breed"
-                            placeholder="e.g., Boran"
+                            placeholder={t.breedPlaceholder || "e.g., Boran"}
                             value={form.breed}
                             onChange={handleChange}
                             required
@@ -74,11 +81,11 @@ function RegisterLivestock() {
                     </div>
 
                     <div>
-                        <label>Weight (kg)</label>
+                        <label>{t.weightKg || "Weight (kg)"}</label>
                         <input
                             type="number"
                             name="weightKg"
-                            placeholder="e.g., 400"
+                            placeholder={t.weightPlaceholder || "e.g., 400"}
                             value={form.weightKg}
                             onChange={handleChange}
                             required
@@ -91,11 +98,11 @@ function RegisterLivestock() {
                     </div>
 
                     <div>
-                        <label>Health Condition</label>
+                        <label>{t.healthCondition || "Health Condition"}</label>
                         <input
                             type="text"
                             name="health"
-                            placeholder="e.g., Good"
+                            placeholder={t.healthPlaceholder || "e.g., Good"}
                             value={form.health}
                             onChange={handleChange}
                             required
@@ -108,11 +115,11 @@ function RegisterLivestock() {
                     </div>
 
                     <div>
-                        <label>Location</label>
+                        <label>{t.location || "Location"}</label>
                         <input
                             type="text"
                             name="location"
-                            placeholder="e.g., Adama"
+                            placeholder={t.locationPlaceholder || "e.g., Adama"}
                             value={form.location}
                             onChange={handleChange}
                             required
@@ -125,7 +132,11 @@ function RegisterLivestock() {
                     </div>
                 </div>
 
-                <Button label="Submit" type="primary" onClick={handleSubmit} />
+                <Button
+                    label={t.submit || "Submit"}
+                    type="primary"
+                    onClick={handleSubmit}
+                />
             </form>
         </Card>
     );
