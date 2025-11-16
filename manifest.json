@@ -1,0 +1,21 @@
+{
+  "short_name": "EMM",
+  "name": "Ethio Meat Market Platform (Dummy Frontend)",
+  "icons": [
+    {
+      "src": "logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#008037",
+  "background_color": "#ffffff",
+  "description": "Prototype front end of Ethio Meat Market — a digital ecosystem connecting suppliers, exporters, and regulators in Ethiopia's meat export chain."
+}

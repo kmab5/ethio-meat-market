@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ethio-meat-market/static/css/main.c8161f79.css",
+    "main.js": "/ethio-meat-market/static/js/main.a1867b53.js",
+    "index.html": "/ethio-meat-market/index.html",
+    "main.c8161f79.css.map": "/ethio-meat-market/static/css/main.c8161f79.css.map",
+    "main.a1867b53.js.map": "/ethio-meat-market/static/js/main.a1867b53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8161f79.css",
+    "static/js/main.a1867b53.js"
+  ]
+}
