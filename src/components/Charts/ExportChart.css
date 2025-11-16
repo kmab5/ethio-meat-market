@@ -1,0 +1,80 @@
+.chart-card {
+    background: #fff;
+    border: 1px solid #e8ece8;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 6px 18px rgba(2, 50, 20, 0.04);
+}
+
+.chart-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #073b20;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.chart-bars .bar {
+    width: 36px;
+    background: linear-gradient(180deg, #00a14a, #007a33);
+    border-radius: 6px 6px 4px 4px;
+    box-shadow: 0 4px 8px rgba(0, 128, 55, 0.08);
+    transition: transform 140ms ease, opacity 120ms ease;
+}
+
+.chart-bars .bar:hover {
+    transform: translateY(-6px) scale(1.02);
+    opacity: 0.98;
+}
+
+.chart-months {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: #555;
+}
+
+.chart-months .month-label {
+    width: 36px;
+    text-align: center;
+}
+
+/* Grid layout for y-axis + chart */
+.chart-grid {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+    align-items: end;
+    margin-top: 10px;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 160px;
+    padding-right: 8px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.y-tick {
+    line-height: 1;
+}
+
+.chart-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-bars {
+    height: 160px;
+}
