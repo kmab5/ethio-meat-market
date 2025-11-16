@@ -1,33 +1,61 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 function Sidebar() {
     const { language, translations } = useLanguage();
 
+    const links = [
+        { to: "/dashboard", key: "dashboard", icon: "🏠" },
+        { to: "/supplier", key: "supplier", icon: "👨‍🌾" },
+        { to: "/exporter", key: "exporter", icon: "🚚" },
+        { to: "/abattoir", key: "abattoir", icon: "🔪" },
+        { to: "/airline", key: "airline", icon: "✈️" },
+        { to: "/regulator", key: "regulator", icon: "🛡️" },
+    ];
+
     return (
         <aside className="sidebar">
-            <h3>{translations?.[language]?.navigation || "Navigation"}</h3>
-            <nav>
-                <Link to="/dashboard">
-                    {translations?.[language]?.dashboard || "Dashboard"}
-                </Link>
-                <Link to="/supplier">
-                    {translations?.[language]?.supplier || "Supplier"}
-                </Link>
-                <Link to="/exporter">
-                    {translations?.[language]?.exporter || "Exporter"}
-                </Link>
-                <Link to="/abattoir">
-                    {translations?.[language]?.abattoir || "Abattoir"}
-                </Link>
-                <Link to="/airline">
-                    {translations?.[language]?.airline || "Airline"}
-                </Link>
-                <Link to="/regulator">
-                    {translations?.[language]?.regulator || "Regulator"}
-                </Link>
-            </nav>
+            <div className="sidebar-header">
+                <img
+                    src={`${process.env.PUBLIC_URL}/logo192.png`}
+                    alt="logo"
+                    width={32}
+                    height={32}
+                    style={{ borderRadius: 6 }}
+                />
+                <div className="brand">
+                    {translations?.[language]?.app || "Ethio Meat Market"}
+                </div>
+            </div>
+
+            <div
+                className="nav"
+                role="navigation"
+                aria-label={
+                    translations?.[language]?.navigation || "Navigation"
+                }
+            >
+                {links.map((l) => (
+                    <NavLink
+                        key={l.to}
+                        to={l.to}
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                    >
+                        <span className="icon" aria-hidden>
+                            {l.icon}
+                        </span>
+                        <span className="label">
+                            {translations?.[language]?.[l.key] || l.key}
+                        </span>
+                    </NavLink>
+                ))}
+            </div>
+
+            <div className="footer">
+                {new Date().getFullYear()} &copy;{" "}
+                {translations?.[language]?.app || "Ethio Meat Market"}
+            </div>
         </aside>
     );
 }
