@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import styles from "../styles/LanguageToggle.module.css";
+import { useLanguage } from "../context/LanguageContext";
 
 function LanguageToggle() {
-    const [lang, setLang] = useState("en");
-
-    const toggleLang = () => {
-        setLang((prev) => (prev === "en" ? "am" : "en"));
-    };
+    const { language, toggleLanguage } = useLanguage();
 
     return (
-        <button className="lang-toggle" onClick={toggleLang}>
-            {lang === "en" ? "🇬🇧 English" : "🇪🇹 አማርኛ"}
+        <button
+            type="button"
+            className={`${styles.languageToggle} language-toggle`}
+            aria-pressed={language === "am"}
+            onClick={toggleLanguage}
+        >
+            {language === "en" ? "🇬🇧 English" : "🇪🇹 አማርኛ"}
         </button>
     );
 }

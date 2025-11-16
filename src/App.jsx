@@ -13,7 +13,7 @@ import AbattoirDashboard from "./pages/Abattoir/AbattoirDashboard";
 import AirlineDashboard from "./pages/Airline/AirlineDashboard";
 import RegulatorDashboard from "./pages/Regulator/RegulatorDashboard";
 
-import "./App.css";
+import "./index.css";
 
 function App() {
     return (

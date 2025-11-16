@@ -32,13 +32,13 @@ body {
 }
 
 /* Navbar and Sidebar defaults (optional placeholders) */
-.navbar {
+/* .navbar {
     background-color: #008037;
     color: white;
     padding: 1rem;
     text-align: center;
     font-weight: bold;
-}
+} */
 
 .sidebar {
     width: 220px;
