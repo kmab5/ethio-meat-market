@@ -119,6 +119,8 @@ export const LanguageProvider = ({ children }) => {
             healthPlaceholder: "e.g., Good",
             locationPlaceholder: "e.g., Adama",
             submit: "Submit",
+            collapse: "Collapse",
+            expand: "Expand",
         },
         am: {
             welcome: "እንኳን ደህና መጡ ወደ EthioMeatApp",
@@ -225,6 +227,8 @@ export const LanguageProvider = ({ children }) => {
             healthPlaceholder: "ለምሳሌ፣ ጥሩ",
             locationPlaceholder: "ለምሳሌ፣ አዳማ",
             submit: "አስገባ",
+            collapse: "ዝጋ",
+            expand: "ክፈት",
         },
     };
 

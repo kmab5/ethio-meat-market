@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -14,8 +14,15 @@ function Sidebar() {
         { to: "/regulator", key: "regulator", icon: "🛡️" },
     ];
 
+    const [collapsed, setCollapsed] = useState(false);
+
+    const handleToggle = () => {
+        if (typeof window !== "undefined" && window.innerWidth < 768) return;
+        setCollapsed((c) => !c);
+    };
+
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
             <div className="sidebar-header">
                 <img
                     src={`${process.env.PUBLIC_URL}/logo192.png`}
@@ -50,6 +57,28 @@ function Sidebar() {
                         </span>
                     </NavLink>
                 ))}
+
+                {/* Collapse control as final nav item */}
+                <button
+                    type="button"
+                    className="collapse-btn"
+                    onClick={handleToggle}
+                    aria-pressed={collapsed}
+                    title={
+                        collapsed
+                            ? translations?.[language]?.expand || "Expand"
+                            : translations?.[language]?.collapse || "Collapse"
+                    }
+                >
+                    <span className="icon" aria-hidden>
+                        {collapsed ? "›" : "‹"}
+                    </span>
+                    <span className="label">
+                        {collapsed
+                            ? translations?.[language]?.expand || "Expand"
+                            : translations?.[language]?.collapse || "Collapse"}
+                    </span>
+                </button>
             </div>
 
             <div className="footer">

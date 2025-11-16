@@ -111,6 +111,48 @@ body {
     color: #666;
 }
 
+/* Collapse styles only apply on wider screens */
+@media (min-width: 768px) {
+    .sidebar.collapsed {
+        width: 72px;
+    }
+
+    .sidebar.collapsed .brand,
+    .sidebar.collapsed .footer,
+    .sidebar.collapsed .label {
+        display: none;
+    }
+}
+
+.collapse-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #333;
+    padding: 0.55rem 0.9rem;
+    text-align: left;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.collapse-btn .icon {
+    width: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide collapse control on small screens */
+@media (max-width: 767px) {
+    .collapse-btn {
+        display: none;
+    }
+}
+
 /* Scrollbar styling for long lists */
 .page-content::-webkit-scrollbar {
     width: 8px;
@@ -130,5 +172,6 @@ body {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid #ddd;
+        order: 100;
     }
 }

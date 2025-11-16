@@ -65,7 +65,12 @@ function Navbar() {
 
                 <div className="navbar__user">
                     <div className="avatar">A</div>
-                    <div className="username nav-desktop-only">Admin</div>
+                    <NavLink
+                        to="/"
+                        className="nav-link username nav-desktop-only"
+                    >
+                        {({ isActive }) => (isActive ? "Log In" : "Admin")}
+                    </NavLink>
                 </div>
 
                 <button
