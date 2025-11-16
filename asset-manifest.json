@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ethio-meat-market/static/css/main.c8161f79.css",
-    "main.js": "/ethio-meat-market/static/js/main.047368cc.js",
+    "main.js": "/ethio-meat-market/static/js/main.b3a2183e.js",
     "index.html": "/ethio-meat-market/index.html",
     "main.c8161f79.css.map": "/ethio-meat-market/static/css/main.c8161f79.css.map",
-    "main.047368cc.js.map": "/ethio-meat-market/static/js/main.047368cc.js.map"
+    "main.b3a2183e.js.map": "/ethio-meat-market/static/js/main.b3a2183e.js.map"
   },
   "entrypoints": [
     "static/css/main.c8161f79.css",
-    "static/js/main.047368cc.js"
+    "static/js/main.b3a2183e.js"
   ]
 }
