@@ -2,6 +2,7 @@ import React from "react";
 import livestock from "../../data/livestock";
 import Card from "../../components/UI/Card";
 import Button from "../../components/UI/Button";
+import "./LivestockBrowser.css";
 import { useLanguage } from "../../context/LanguageContext";
 
 function LivestockBrowser() {
@@ -15,24 +16,9 @@ function LivestockBrowser() {
                 "Available Livestock"
             }
         >
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-                    gap: "1rem",
-                }}
-            >
+            <div className="livestock-grid">
                 {available.map((item) => (
-                    <div
-                        key={item.id}
-                        style={{
-                            backgroundColor: "#fff",
-                            border: "1px solid #ddd",
-                            borderRadius: "8px",
-                            padding: "1rem",
-                            boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
-                        }}
-                    >
+                    <div key={item.id} className="livestock-card">
                         <h4>{item.type}</h4>
                         <p>
                             <strong>
@@ -62,14 +48,18 @@ function LivestockBrowser() {
                             </strong>{" "}
                             {item.location}
                         </p>
-                        <Button
-                            label={
-                                translations?.[language]?.requestOrder ||
-                                "Request Order"
-                            }
-                            type="primary"
-                            onClick={() => alert("Dummy: Order request sent!")}
-                        />
+                        <div className="actions">
+                            <Button
+                                label={
+                                    translations?.[language]?.requestOrder ||
+                                    "Request Order"
+                                }
+                                type="primary"
+                                onClick={() =>
+                                    alert("Dummy: Order request sent!")
+                                }
+                            />
+                        </div>
                     </div>
                 ))}
             </div>
