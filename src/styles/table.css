@@ -1,0 +1,75 @@
+/* Shared table styles for the app */
+.tabled:has(.styled-table) {
+    overflow-x: scroll;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: inherit;
+    background: #fff;
+}
+
+.styled-table thead tr {
+    background-color: #f6f7f8;
+    text-align: left;
+}
+
+.styled-table th {
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #333;
+    border-bottom: 1px solid #ececec;
+}
+
+.styled-table td {
+    padding: 10px 12px;
+    color: #333;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #fcfcfd;
+}
+
+.status-cell {
+    font-weight: 600;
+}
+
+.styled-table tbody .status-available {
+    color: #008037;
+}
+.styled-table tbody .status-sold {
+    color: #e67e22;
+}
+.styled-table tbody .status-pending {
+    color: #6c757d;
+}
+.styled-table tbody .status-scheduled {
+    color: #008037;
+}
+.styled-table tbody .status-intransit {
+    color: #e67e22;
+}
+.styled-table tbody .status-delivered,
+.styled-table tbody .status-completed {
+    color: #2c3e50;
+}
+.styled-table tbody .status-cancelled {
+    color: #c0392b;
+}
+.styled-table tbody .status-default {
+    color: #555;
+}
+
+/* responsive */
+@media (max-width: 680px) {
+    .styled-table th,
+    .styled-table td {
+        padding: 8px 6px;
+        font-size: 0.9rem;
+    }
+}

@@ -162,7 +162,7 @@ export const LanguageProvider = ({ children }) => {
             regulatorDashboardTitle: "የቁጥጥር ባለስልጣን ዳሽቦርድ",
             regulatorDashboardDesc:
                 "የላክ እንቅስቃሴዎችን ይከታተሉ፣ ፈቃዶችን ይንቁራሩ፣ እና የአፈጻጸም ግምገማዎችን ይያዙ።",
-            abattoirDashboardTitle: "የአባቶይር ዳሽቦርድ",
+            abattoirDashboardTitle: "የአራጅ ዳሽቦርድ",
             abattoirDashboardDesc:
                 "የማስወገድ ሰሌዳዎችን፣ ጥቅልና የአየር መስርያ ቅድሚያዎችን ይንቁራሩ።",
             totalBatches: "ጠቅላላ ቡትች",
@@ -170,7 +170,7 @@ export const LanguageProvider = ({ children }) => {
             inTransit: "በመንቀሳቀስ ላይ",
             batchSchedules: "የቡትች እቅዶች",
             batchId: "የቡትች መታወቂያ",
-            abattoirLabel: "አባቶይር",
+            abattoirLabel: "አራጅ",
             dateLabel: "ቀን",
             livestockBatch: "የእንስሳት ቡትች",
             airlineLabel: "አየር መንገድ",

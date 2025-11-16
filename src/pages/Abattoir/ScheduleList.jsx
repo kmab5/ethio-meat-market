@@ -2,80 +2,68 @@ import React from "react";
 import schedules from "../../data/schedules";
 import Card from "../../components/UI/Card";
 import { useLanguage } from "../../context/LanguageContext";
+import "../../styles/table.css";
 
 function ScheduleList() {
     const { language, translations } = useLanguage();
 
     return (
         <Card
+            classes="tabled"
             title={
                 translations?.[language]?.batchSchedules || "Batch Schedules"
             }
         >
-            <table
-                style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    marginTop: "10px",
-                }}
-            >
+            <table className="styled-table">
                 <thead>
-                    <tr
-                        style={{
-                            backgroundColor: "#f1f1f1",
-                            textAlign: "left",
-                        }}
-                    >
-                        <th style={{ padding: "8px" }}>
+                    <tr>
+                        <th>
                             {translations?.[language]?.batchId || "Batch ID"}
                         </th>
-                        <th style={{ padding: "8px" }}>
+                        <th>
                             {translations?.[language]?.abattoirLabel ||
                                 "Abattoir"}
                         </th>
-                        <th style={{ padding: "8px" }}>
-                            {translations?.[language]?.dateLabel || "Date"}
-                        </th>
-                        <th style={{ padding: "8px" }}>
+                        <th>{translations?.[language]?.dateLabel || "Date"}</th>
+                        <th>
                             {translations?.[language]?.livestockBatch ||
                                 "Livestock Batch"}
                         </th>
-                        <th style={{ padding: "8px" }}>
+                        <th>
                             {translations?.[language]?.airlineLabel ||
                                 "Airline"}
                         </th>
-                        <th style={{ padding: "8px" }}>
+                        <th>
                             {translations?.[language]?.statusLabel || "Status"}
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {schedules.map((s) => (
-                        <tr
-                            key={s.id}
-                            style={{ borderBottom: "1px solid #ddd" }}
-                        >
-                            <td style={{ padding: "8px" }}>#{s.id}</td>
-                            <td style={{ padding: "8px" }}>{s.abattoir}</td>
-                            <td style={{ padding: "8px" }}>{s.date}</td>
-                            <td style={{ padding: "8px" }}>{s.batch}</td>
-                            <td style={{ padding: "8px" }}>{s.airline}</td>
-                            <td
-                                style={{
-                                    padding: "8px",
-                                    color:
-                                        s.status === "Scheduled"
-                                            ? "#008037"
-                                            : s.status === "In Transit"
-                                            ? "#e67e22"
-                                            : "#555",
-                                    fontWeight: 500,
-                                }}
-                            >
-                                {s.status}
-                            </td>
-                        </tr>
-                    ))}
+                    {schedules.map((s) => {
+                        const statusClass =
+                            s.status === "Scheduled"
+                                ? "status-scheduled"
+                                : s.status === "In Transit"
+                                ? "status-intransit"
+                                : s.status === "Completed"
+                                ? "status-completed"
+                                : s.status === "Cancelled"
+                                ? "status-cancelled"
+                                : "status-default";
+
+                        return (
+                            <tr key={s.id}>
+                                <td>#{s.id}</td>
+                                <td>{s.abattoir}</td>
+                                <td>{s.date}</td>
+                                <td>{s.batch}</td>
+                                <td>{s.airline}</td>
+                                <td className={`status-cell ${statusClass}`}>
+                                    {s.status}
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </Card>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ title, children }) {
+function Card({ title, children, classes = "" }) {
     const cardStyle = {
         backgroundColor: "#fff",
         border: "1px solid #ddd",
@@ -11,7 +11,7 @@ function Card({ title, children }) {
     };
 
     return (
-        <div style={cardStyle}>
+        <div className={classes} style={cardStyle}>
             {title && <h4 style={{ marginBottom: "10px" }}>{title}</h4>}
             {children}
         </div>
