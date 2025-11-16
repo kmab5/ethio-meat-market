@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
 import { useLanguage } from "../context/LanguageContext";
 import "../styles/form.css";
@@ -97,10 +97,10 @@ function Login() {
 
             <p className="form-help">
                 {translations?.[language]?.dontHaveAccount ||
-                    "Don’t have an account?"}{" "}
-                <a href="/register">
+                    "Don't have an account?"}{" "}
+                <NavLink to="/register">
                     {translations?.[language]?.register || "Register"}
-                </a>
+                </NavLink>
             </p>
         </div>
     );

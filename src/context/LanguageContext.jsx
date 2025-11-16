@@ -23,7 +23,7 @@ export const LanguageProvider = ({ children }) => {
             enterYourPassword: "Enter your password",
             enterYourName: "Enter your name",
             createAccount: "Create Account",
-            dontHaveAccount: "Don’t have an account?",
+            dontHaveAccount: "Don't have an account?",
             alreadyHaveAccount: "Already have an account?",
             dashboardOverview: "Dashboard Overview",
             livestock: "Livestock",

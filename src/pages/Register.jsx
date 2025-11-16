@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
 import { useLanguage } from "../context/LanguageContext";
 import "../styles/form.css";
@@ -117,7 +117,9 @@ function Register() {
             <p className="form-help">
                 {translations?.[language]?.alreadyHaveAccount ||
                     "Already have an account?"}{" "}
-                <a href="/">{translations?.[language]?.login || "Login"}</a>
+                <NavLink to="/">
+                    {translations?.[language]?.login || "Login"}
+                </NavLink>
             </p>
         </div>
     );
