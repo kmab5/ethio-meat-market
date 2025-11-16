@@ -56,17 +56,19 @@ function LivestockList() {
                                 style={{
                                     padding: "8px",
                                     color:
-                                        item.status ===
-                                        (t.availableLabel || "Available")
+                                        item.status === "Available"
                                             ? "#008037"
-                                            : item.status ===
-                                              (t.soldLabel || "Sold")
+                                            : item.status === "Sold"
                                             ? "#e67e22"
                                             : "#555",
                                     fontWeight: 500,
                                 }}
                             >
-                                {item.status}
+                                {item.status === "Available"
+                                    ? t.availableLabel || "Available"
+                                    : item.status === "Sold"
+                                    ? t.soldLabel || "Sold"
+                                    : ""}
                             </td>
                         </tr>
                     ))}

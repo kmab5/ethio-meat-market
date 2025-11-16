@@ -215,7 +215,7 @@ export const LanguageProvider = ({ children }) => {
             weightKg: "ሚዛን (ኪ.ግ)",
             health: "ጤና",
             location: "ቦታ",
-            availableLabel: "ያለ",
+            availableLabel: "አለ",
             soldLabel: "የተሸጠ",
             registerNewLivestock: "አዲስ እንስሳ ይመዝግቡ",
             livestockRegistered: "እንስሳ በትክክል ተመዝግቧል! (ዳሚ)",

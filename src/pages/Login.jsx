@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/UI/Button";
 import { useLanguage } from "../context/LanguageContext";
+import "../styles/form.css";
 
 function Login() {
     const navigate = useNavigate();
@@ -24,22 +25,14 @@ function Login() {
     const { language, translations } = useLanguage();
 
     return (
-        <div
-            style={{
-                maxWidth: "400px",
-                margin: "5rem auto",
-                padding: "2rem",
-                borderRadius: "8px",
-                backgroundColor: "#fff",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-            }}
-        >
-            <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-                {translations?.[language]?.login || "Login"}
-            </h2>
-            <form onSubmit={handleSubmit}>
-                <label>{translations?.[language]?.email || "Email"}</label>
+        <div className="form-container">
+            <h2>{translations?.[language]?.login || "Login"}</h2>
+            <form className="form" onSubmit={handleSubmit}>
+                <label className="form-label">
+                    {translations?.[language]?.email || "Email"}
+                </label>
                 <input
+                    className="form-input"
                     type="email"
                     name="email"
                     placeholder={
@@ -49,17 +42,13 @@ function Login() {
                     value={form.email}
                     onChange={handleChange}
                     required
-                    style={{
-                        width: "100%",
-                        marginBottom: "1rem",
-                        padding: "8px",
-                    }}
                 />
 
-                <label>
+                <label className="form-label">
                     {translations?.[language]?.password || "Password"}
                 </label>
                 <input
+                    className="form-input"
                     type="password"
                     name="password"
                     placeholder={
@@ -69,23 +58,16 @@ function Login() {
                     value={form.password}
                     onChange={handleChange}
                     required
-                    style={{
-                        width: "100%",
-                        marginBottom: "1rem",
-                        padding: "8px",
-                    }}
                 />
 
-                <label>{translations?.[language]?.role || "Role"}</label>
+                <label className="form-label">
+                    {translations?.[language]?.role || "Role"}
+                </label>
                 <select
+                    className="form-select"
                     name="role"
                     value={form.role}
                     onChange={handleChange}
-                    style={{
-                        width: "100%",
-                        marginBottom: "1.5rem",
-                        padding: "8px",
-                    }}
                 >
                     <option>
                         {translations?.[language]?.supplier || "Supplier"}
@@ -104,14 +86,16 @@ function Login() {
                     </option>
                 </select>
 
-                <Button
-                    label={translations?.[language]?.login || "Login"}
-                    type="primary"
-                    onClick={handleSubmit}
-                />
+                <div className="form-actions">
+                    <Button
+                        label={translations?.[language]?.login || "Login"}
+                        type="primary"
+                        onClick={handleSubmit}
+                    />
+                </div>
             </form>
 
-            <p style={{ marginTop: "1rem", textAlign: "center" }}>
+            <p className="form-help">
                 {translations?.[language]?.dontHaveAccount ||
                     "Don’t have an account?"}{" "}
                 <a href="/register">
